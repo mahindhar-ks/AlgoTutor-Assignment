@@ -1,0 +1,32 @@
+//Spiral Matrix II :
+
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int num[][] = new int[n][n];
+        int count = 1;
+        int t = 0,l = 0,b = n -1,r = n - 1;
+        while(t <= b && l <= r){
+            for(int i = l ; i <= r ; i++){
+                num[t][i] = count++;
+            }
+            t++;
+            for(int i = t ; i <= b; i++){
+                num[i][r] = count++;
+            }
+            r--;
+            if(t <= b){
+                for(int i = r; i >= l; i --){
+                    num[b][i] = count++;
+                }
+                b--;
+            }
+            if(l <= r){
+                for(int i = b; i >= t; i --){
+                    num[i][l] = count++;
+                }
+                l++;
+            }
+        }
+        return num;
+    }
+}
